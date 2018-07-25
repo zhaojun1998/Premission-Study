@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>im.zhaojun</groupId>
+  <artifactId>Permission-Study</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>Permission-Basic</module>
+      <module>Permission-Shiro</module>
+      <module>shiro-authenticate</module>
+      <module>shiro-spring</module>
+  </modules>
+  <packaging>pom</packaging>
+
+  <name>Permission-Study Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>5.0.7.RELEASE</version>
+    </dependency>
+  </dependencies>
+</project>
