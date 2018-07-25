@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="im.zhaojun.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="im.zhaojun.model.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, username, password
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectALL" resultType="im.zhaojun.model.User">
+        select
+        <include refid="Base_Column_List"/>
+        from `user`
+    </select>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="im.zhaojun.model.User" useGeneratedKeys="true">
+        insert into user (username, password)
+        values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="im.zhaojun.model.User">
+        update user
+        set username = #{username,jdbcType=VARCHAR},
+            password = #{password,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectRolesByPrimaryKey" parameterType="java.lang.Integer" resultType="im.zhaojun.model.Role">
+        select role.*
+        from role, user_role
+        where user_role.role_id = role.id and user_role.user_id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteRoles" parameterType="java.lang.Integer">
+        delete from user_role
+        where user_id = #{id, jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertUserRole">
+        insert into user_role (user_id, role_id) values (#{user_id}, #{role_id})
+    </insert>
+
+    <select id="selectUserByUsernameAndPassword" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where username=#{username,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

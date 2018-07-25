@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="im.zhaojun.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="im.zhaojun.model.Role">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, description
+    </sql>
+
+    <select id="selectAll" resultType="im.zhaojun.model.Role">
+        select
+        <include refid="Base_Column_List"/>
+        from role
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from role
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="im.zhaojun.model.Role" useGeneratedKeys="true">
+        insert into role (name, description)
+        values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="im.zhaojun.model.Role">
+        update role
+        set name        = #{name,jdbcType=VARCHAR},
+            description = #{description,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectPermissionsByPrimaryKey" parameterType="java.lang.Integer"
+            resultType="im.zhaojun.model.Permission">
+        select *
+        from role_premission, permission
+        where role_premission.permission_id = permission.id
+              and role_premission.role_id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deletePermissions" parameterType="java.lang.Integer">
+        delete from role_premission
+        where role_id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertRolePermission">
+        insert into role_premission (role_id, permission_id) VALUES (#{role_id}, #{permission_id})
+    </insert>
+</mapper>
