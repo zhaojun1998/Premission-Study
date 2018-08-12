@@ -25,7 +25,7 @@ public class AuthorizationTest {
     }
 
     /**
-     * 测试用户授权(是否具备某个角色)
+     * 测试用户授权(是否具备某个角色或权限)
      */
     @Test
     public void testAuthentication() {

@@ -79,5 +79,3 @@ public class AuthenticateTest {
 UnknownAccountException             # 未知账户/没找到帐号
 IncorrectCredentialsException       # 错误的凭证(密码)异常
 ```
-
-本章代码地址 : https://github.com/zhaojun1998/Premission-Study/tree/master/Permission-Shiro-01/

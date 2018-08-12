@@ -1,4 +1,6 @@
-授权在 Shiro 中被称为 **Authorization**，用来**验证用户是否具备某个角色**。
+## Shiro 授权
+
+授权在 Shiro 中被称为 **Authorization**，用来**验证用户是否具备某个角色或权限**。
 
 <!-- more -->
 
@@ -43,7 +45,7 @@ public class AuthorizationTest {
     }
 
     /**
-     * 测试用户授权(是否具备某个角色)
+     * 测试用户授权(是否具备某个角色或权限)
      */
     @Test
     public void testAuthentication() {
@@ -79,8 +81,3 @@ public class AuthorizationTest {
 也可以使用 `subject.checkRole("admin")` 来校验，此方法没有返回值，但如账户不具备此角色，会抛出 `UnauthorizedException` 异常。
 
 还有 `subject.hasAllRoles(Collection<String> collection)` 及 `subject.CheckRoles(String... strings)` 等 API 用来判断用来进行其他方式的校验角色。
-
-
-
-
-本章代码地址 : https://github.com/zhaojun1998/Premission-Study/tree/master/Permission-Shiro-02/
