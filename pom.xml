@@ -8,10 +8,9 @@
   <artifactId>Permission-Study</artifactId>
   <version>1.0-SNAPSHOT</version>
   <modules>
-    <module>Permission-Basic</module>
-      <module>Permission-Shiro</module>
-      <module>shiro-authenticate</module>
-      <module>shiro-spring</module>
+      <module>Permission-Basic</module>
+      <module>Permission-Shiro-01</module>
+      <module>Permission-Shiro-02</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -21,15 +20,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>5.0.7.RELEASE</version>
-    </dependency>
-  </dependencies>
 </project>
