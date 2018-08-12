@@ -36,4 +36,5 @@ public interface RoleMapper {
      * @return 插入成功的条数
      */
     int insertRolePermission(@Param("role_id")Integer roleId, @Param("permission_id") Integer permissionId);
+
 }

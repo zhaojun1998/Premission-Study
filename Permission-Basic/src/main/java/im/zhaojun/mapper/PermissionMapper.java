@@ -12,4 +12,5 @@ public interface PermissionMapper {
     int updateByPrimaryKey(Permission record);
 
     List<Permission> selectAll();
+
 }
