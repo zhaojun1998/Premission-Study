@@ -2,3 +2,9 @@
 
 * [Shiro 认证](http://www.zhaojun.im/shiro-01/)
 * [Shiro 授权](http://www.zhaojun.im/shiro-02/)
+* [Shiro Realm](http://www.zhaojun.im/shiro-03/)
+    * [IniRealm](http://www.zhaojun.im/shiro-03/#IniRealm)
+    * [JdbcRealm](http://www.zhaojun.im/shiro-03/#JdbcRelam)
+    * [自定义Realm](http://www.zhaojun.im/shiro-03/#自定义-Relam)
+
+
