@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-lazy-init="false">
+
+    <!-- 缓存管理器 使用memory实现 -->
+
+
+    <!--rememberMe 30天 -->
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="COOKIE_NAME"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="2592000"/>
+
+    </bean>
+
+    <!-- rememberMe管理器 -->
+    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}"/>
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- 继承AuthorizingRealm的类-->
+        <property name="realm" ref="userRealm"/>
+        <property name="rememberMeManager" ref="rememberMeManager"/>
+    </bean>
+
+    <!-- Shiro Filter -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/openid"/>
+        <property name="successUrl" value="/manage"/>
+        <property name="unauthorizedUrl" value="/openid"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /api/**=anon
+                /res/**=anon
+                /src/**=anon
+                /health/**=anon
+                /logout=authc
+                /openid=anon
+                /callback=anon
+                /=authc
+                /**=anon
+            </value>
+        </property>
+    </bean>
+
+
+    <!-- Shiro生命周期处理器 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- shiro相关的配置文件和路径扫描的配置必须要放在项目的mvc的配置文件(即xxx-servlet.xml)里 -->
+    <aop:config proxy-target-class="true"/>
+
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+</beans>
