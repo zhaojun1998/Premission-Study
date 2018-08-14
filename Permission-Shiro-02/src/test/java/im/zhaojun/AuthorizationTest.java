@@ -8,7 +8,6 @@ import org.apache.shiro.subject.Subject;
 import org.junit.Before;
 import org.junit.Test;
 
-
 /**
  * Shiro 授权
  */

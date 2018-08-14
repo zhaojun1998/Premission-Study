@@ -6,5 +6,5 @@
     * [IniRealm](http://www.zhaojun.im/shiro-03/#IniRealm)
     * [JdbcRealm](http://www.zhaojun.im/shiro-03/#JdbcRelam)
     * [自定义Realm](http://www.zhaojun.im/shiro-03/#自定义-Relam)
-
+* [Shiro 加密](http://www.zhaojun.im/shiro-03/)
 

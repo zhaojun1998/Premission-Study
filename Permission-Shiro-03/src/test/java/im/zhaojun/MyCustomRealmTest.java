@@ -1,5 +1,6 @@
 package im.zhaojun;
 
+import im.zhaojun.realm.MyCustomRealm;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.mgt.DefaultSecurityManager;

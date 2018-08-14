@@ -3,8 +3,13 @@
 Realm: 域，Shiro 从 Realm 中获取用户，角色，权限信息。可以把 Relam 看成 DataSource，即安全数据源。
 
 
-
 >  在前两章的认证和授权中，我们也使用到了 `SimpleAccountRealm`，并通过其 `addAccount(username, password, roles)` 来预设用户和角色信息。
+
+
+
+<!--more-->
+
+
 
 ## IniRealm
 
@@ -283,7 +288,7 @@ jdbcRealm.setUserRolesQuery(String userRolesQuery);
 我们需要创建一个类来继承 `AuthorizingRealm` ，并实现其抽象方法：
 
 ```java
-import im.zhaojun.pojo.User;
+import im.zhaojun.im.zhaojun.pojo.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -310,9 +315,9 @@ public class MyCustomRealm extends AuthorizingRealm {
 
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
-        // 根据用户名
-        Set<String> roles = selectRoles(username);
-        Set<String> permissions = selectPermissions(username);
+        // 根据用户名其所拥有的角色和权限
+        Set<String> roles = selectRolesByUserName(username);
+        Set<String> permissions = selectPermissionsByUserName(username);
 
         authorizationInfo.setRoles(roles);
         authorizationInfo.setStringPermissions(permissions);
@@ -330,7 +335,7 @@ public class MyCustomRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
 
         // 这个方法也可以使用 DAO 层的方法来查询数据库，返回 user 对象。
-        User user = selectByUserName((String) authenticationToken.getPrincipal());
+        User user = selectUserByUserName((String) authenticationToken.getPrincipal());
 
         if (user == null) {
             throw new UnknownAccountException("账号不存在");
@@ -340,7 +345,7 @@ public class MyCustomRealm extends AuthorizingRealm {
     }
 
 
-    private Set<String> selectPermissions(String username) {
+    private Set<String> selectPermissionsByUserName(String username) {
         HashSet<String> permissions = new HashSet<>();
         // 假设只有 zhao 这个用户具备 select 权限
         if ("zhao".equals(username)) {
@@ -349,7 +354,7 @@ public class MyCustomRealm extends AuthorizingRealm {
         return permissions;
     }
 
-    private Set<String> selectRoles(String username) {
+    private Set<String> selectRolesByUserName(String username) {
         HashSet<String> roles = new HashSet<>();
 
         // 假设只有 zhao 这个用户具备 user 角色
@@ -359,7 +364,7 @@ public class MyCustomRealm extends AuthorizingRealm {
         return roles;
     }
 
-    private User selectByUserName(String username) {
+    private User selectUserByUserName(String username) {
         User user = null;
 
         // 假设当前只有 zhao - 123465 这个账户.
@@ -382,6 +387,7 @@ public class MyCustomRealm extends AuthorizingRealm {
 测试：
 
 ```java
+import im.zhaojun.realm.MyCustomRealm;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.mgt.DefaultSecurityManager;
@@ -411,3 +417,5 @@ public class MyCustomRealmTest {
     }
 }
 ```
+
+本章代码地址 : https://github.com/zhaojun1998/Premission-Study/tree/master/Permission-Shiro-03/

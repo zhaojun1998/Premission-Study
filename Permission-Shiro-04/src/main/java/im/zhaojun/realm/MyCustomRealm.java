@@ -1,4 +1,4 @@
-package im.zhaojun;
+package im.zhaojun.realm;
 
 import im.zhaojun.pojo.User;
 import org.apache.shiro.authc.*;
@@ -6,12 +6,13 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 自定义 Realm
+ * 自定义 Realm, 使用了加密, 盐
  */
 public class MyCustomRealm extends AuthorizingRealm {
 
@@ -27,9 +28,9 @@ public class MyCustomRealm extends AuthorizingRealm {
 
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
-        // 根据用户名
-        Set<String> roles = selectRoles(username);
-        Set<String> permissions = selectPermissions(username);
+        // 根据用户名其所拥有的角色和权限
+        Set<String> roles = selectRolesByUserName(username);
+        Set<String> permissions = selectPermissionsByUserName(username);
 
         authorizationInfo.setRoles(roles);
         authorizationInfo.setStringPermissions(permissions);
@@ -47,17 +48,18 @@ public class MyCustomRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
 
         // 这个方法也可以使用 DAO 层的方法来查询数据库，返回 user 对象。
-        User user = selectByUserName((String) authenticationToken.getPrincipal());
+        User user = selectUserByUserName((String) authenticationToken.getPrincipal());
 
         if (user == null) {
             throw new UnknownAccountException("账号不存在");
         }
-
-        return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), super.getName());
+        // 告诉 Relam, 校验密码时需要加的盐.
+        ByteSource slat = ByteSource.Util.bytes("ShiroStudy");
+        return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), slat, super.getName());
     }
 
 
-    private Set<String> selectPermissions(String username) {
+    private Set<String> selectPermissionsByUserName(String username) {
         HashSet<String> permissions = new HashSet<>();
         // 假设只有 zhao 这个用户具备 select 权限
         if ("zhao".equals(username)) {
@@ -66,7 +68,7 @@ public class MyCustomRealm extends AuthorizingRealm {
         return permissions;
     }
 
-    private Set<String> selectRoles(String username) {
+    private Set<String> selectRolesByUserName(String username) {
         HashSet<String> roles = new HashSet<>();
 
         // 假设只有 zhao 这个用户具备 user 角色
@@ -76,12 +78,12 @@ public class MyCustomRealm extends AuthorizingRealm {
         return roles;
     }
 
-    private User selectByUserName(String username) {
+    private User selectUserByUserName(String username) {
         User user = null;
 
         // 假设当前只有 zhao - 123465 这个账户.
         if ("zhao".equals(username)) {
-            user = new User("zhao", "123456");
+            user = new User("zhao", "ac7351ab94f40504aab7ac7fdf4ddad3");
         }
         return user;
     }
