@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- shiro 过滤器, 要与 web.xml 中的 Filter Name 相同-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 登录页面, 未认证时访问需要认证或授权的资源会自动跳转到此页面 -->
+        <property name="loginUrl" value="/login.jsp"/>
+        <!-- 登录成功页面 -->
+        <property name="successUrl" value="/index.jsp"/>
+        <!-- 登录后, 访问未授权的资源会跳转到此页面 -->
+        <property name="unauthorizedUrl" value="/unauthorized.jsp"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /login.jsp = anon
+                /login = anon
+                /user.jsp = roles[user]
+                /admin.jsp = roles[admin]
+                /userList.jsp = perms[select]
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myRealm"/>
+    </bean>
+
+    <!-- 自定义 Relam -->
+    <bean id="myRealm" class="im.zhaojun.realm.MyRealm"/>
+</beans>
