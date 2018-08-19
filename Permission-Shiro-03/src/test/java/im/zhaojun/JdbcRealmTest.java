@@ -51,7 +51,7 @@ public class JdbcRealmTest {
             subject.login(token);
         } catch (AuthenticationException e) {
             e.printStackTrace();
-            System.out.println("登陆失败");
+            System.out.println("登录失败");
         }
 
         System.out.println("--------------------认证--------------------");

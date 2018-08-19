@@ -25,7 +25,7 @@ public class AuthenticateTest {
     }
 
     /**
-     * 测试用户认证(登陆)
+     * 测试用户认证(登录)
      */
     @Test
     public void testAuthenticate() {
@@ -45,10 +45,10 @@ public class AuthenticateTest {
         UsernamePasswordToken token =
                 new UsernamePasswordToken("zhao", "123456");
 
-        // 进行登陆操作
+        // 进行登录操作
         subject.login(token);
 
-        // 验证是否为登陆状态
-        System.out.println("是否登陆: " + subject.isAuthenticated());
+        // 验证是否为登录状态
+        System.out.println("是否登录: " + subject.isAuthenticated());
     }
 }

@@ -53,9 +53,9 @@ public class EncryptionTest {
         try {
             subject.login(token);
         } catch (AuthenticationException e) {
-            System.out.println("登陆失败");
+            System.out.println("登录失败");
             e.printStackTrace();
         }
-        System.out.println("当前登陆状态: " + subject.isAuthenticated());
+        System.out.println("当前登录状态: " + subject.isAuthenticated());
     }
 }

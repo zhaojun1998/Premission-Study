@@ -9,7 +9,7 @@
     <a href="listRole">角色管理</a>
     <a href="listPermission">权限管理</a>
     <hr>
-    <a href="login.jsp">登陆</a>
+    <a href="login.jsp">登录</a>
 
     <hr>
     <ul>

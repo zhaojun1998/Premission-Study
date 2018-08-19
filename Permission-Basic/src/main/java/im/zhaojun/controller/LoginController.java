@@ -21,9 +21,9 @@ public class LoginController {
         User user = userService.selectUserByUsernameAndPassword(username, password);
         if (user != null) {
             httpSession.setAttribute("user", user);
-            return "登陆成功";
+            return "登录成功";
         }
-        return "登陆失败";
+        return "登录失败";
     }
 
 }

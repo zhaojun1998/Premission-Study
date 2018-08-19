@@ -43,11 +43,11 @@ public class AuthorizationTest {
         // 创建一个账号密码
         UsernamePasswordToken token = new UsernamePasswordToken("zhao", "123456");
 
-        // 进行登陆操作
+        // 进行登录操作
         subject.login(token);
 
-        // 验证是否为登陆状态
-        System.out.println("是否登陆: " + subject.isAuthenticated());
+        // 验证是否为登录状态
+        System.out.println("是否登录: " + subject.isAuthenticated());
 
         // 验证是否具备某个角色
         System.out.println("是否具备admin角色: " + subject.hasRole("admin"));
