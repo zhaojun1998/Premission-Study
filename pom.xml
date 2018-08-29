@@ -15,6 +15,7 @@
       <module>Permission-Shiro-04</module>
       <module>Permission-Shiro-05</module>
       <module>Permission-Shiro-06</module>
+      <module>Permission-Shiro-07</module>
   </modules>
   <packaging>pom</packaging>
 
