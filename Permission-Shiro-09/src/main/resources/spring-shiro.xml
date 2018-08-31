@@ -18,6 +18,7 @@
                 /login = anon
                 /user.jsp = anyRoles[user, admin]
                 /userList.jsp = perms[select:delete]
+                /session = anon
                 /logout = logout
                 /** = authc
             </value>
@@ -34,6 +35,7 @@
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="myRealm"/>
         <property name="cacheManager" ref="redisCacheManager"/>
+        <property name="sessionManager" ref="sessionManager"/>
     </bean>
 
     <!-- 自定义 Relam -->
@@ -44,6 +46,11 @@
     <!-- 凭证匹配器 : 使用 md5 算法-->
     <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
         <property name="hashAlgorithmName" value="md5" />
+    </bean>
+
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionListeners" ref="mySessionListener"/>
+        <property name="sessionDAO" ref="redisSessionDAO"/>
     </bean>
 
 </beans>

@@ -11,4 +11,5 @@
 * [Shiro 集成 Spring 之加密](http://www.zhaojun.im/shiro-06/)
 * [Shiro 集成 Spring 之过滤器](http://www.zhaojun.im/shiro-07/)
 * [Shiro 集成 Spring 之授权缓存](http://www.zhaojun.im/shiro-08/)
+* [Shiro 集成 Spring 之会话管理](http://www.zhaojun.im/shiro-09/)
 
