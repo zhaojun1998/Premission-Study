@@ -1,0 +1,1 @@
+代码对应博客地址: [Shiro 集成 Spring 之授权缓存](http://www.zhaojun.im/shiro-08/)
