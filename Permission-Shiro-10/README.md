@@ -1,0 +1,1 @@
+代码对应博客地址: [Shiro 集成 Spring 之注解](http://www.zhaojun.im/shiro-10/)
