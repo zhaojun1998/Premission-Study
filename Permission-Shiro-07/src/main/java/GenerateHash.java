@@ -3,7 +3,6 @@ import org.apache.shiro.util.ByteSource;
 
 /**
  * 将现在的密码: "123456", 用 md5 加密, 并以 "TestSalt"
- *
  */
 public class GenerateHash {
     public static void main(String[] args) {

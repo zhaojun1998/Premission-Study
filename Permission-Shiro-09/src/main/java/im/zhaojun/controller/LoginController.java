@@ -19,7 +19,7 @@ import java.util.Collection;
  */
 @Controller
 public class LoginController {
-    
+
     private static final Logger logger = Logger.getLogger(LoginController.class);
 
     @RequestMapping("login")

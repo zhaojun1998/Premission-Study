@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>im.zhaojun</groupId>
-  <artifactId>Permission-Study</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <modules>
-      <module>Permission-Basic</module>
-      <module>Permission-Shiro-01</module>
-      <module>Permission-Shiro-02</module>
-      <module>Permission-Shiro-03</module>
-      <module>Permission-Shiro-04</module>
-      <module>Permission-Shiro-05</module>
-      <module>Permission-Shiro-06</module>
-      <module>Permission-Shiro-07</module>
-      <module>Permission-Shiro-08</module>
-      <module>Permission-Shiro-09</module>
-  </modules>
-  <packaging>pom</packaging>
+    <groupId>im.zhaojun</groupId>
+    <artifactId>Permission-Study</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>Permission-Basic</module>
+        <module>Permission-Shiro-01</module>
+        <module>Permission-Shiro-02</module>
+        <module>Permission-Shiro-03</module>
+        <module>Permission-Shiro-04</module>
+        <module>Permission-Shiro-05</module>
+        <module>Permission-Shiro-06</module>
+        <module>Permission-Shiro-07</module>
+        <module>Permission-Shiro-08</module>
+        <module>Permission-Shiro-09</module>
+    </modules>
+    <packaging>pom</packaging>
 
-  <name>Permission-Study Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+    <name>Permission-Study Maven Webapp</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 </project>

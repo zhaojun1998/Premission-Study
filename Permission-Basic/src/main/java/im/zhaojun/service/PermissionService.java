@@ -16,7 +16,7 @@ public class PermissionService {
     @Resource
     private PermissionMapper permissionMapper;
 
-    public Integer add(Permission permission){
+    public Integer add(Permission permission) {
         return permissionMapper.insert(permission);
     }
 

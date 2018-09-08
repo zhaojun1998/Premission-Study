@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MySessionListener implements SessionListener {
-        
+
     private static final Logger logger = Logger.getLogger(MySessionListener.class);
 
     @Override

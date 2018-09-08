@@ -22,8 +22,8 @@
     </insert>
     <update id="updateByPrimaryKey" parameterType="im.zhaojun.model.Permission">
         update permission
-        set name        = #{name,jdbcType=VARCHAR},
-            description = #{description,jdbcType=VARCHAR}
+        set name = #{name,jdbcType=VARCHAR},
+        description = #{description,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
 

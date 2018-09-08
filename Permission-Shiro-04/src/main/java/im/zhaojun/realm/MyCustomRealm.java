@@ -19,12 +19,13 @@ public class MyCustomRealm extends AuthorizingRealm {
 
     /**
      * 根据用户凭证查询所用拥有的角色和权限
+     *
      * @param principalCollection 用户凭证
      * @return 返回授权信息，包含所拥有的角色和权限
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        String username = (String)principalCollection.getPrimaryPrincipal();
+        String username = (String) principalCollection.getPrimaryPrincipal();
 
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
@@ -40,6 +41,7 @@ public class MyCustomRealm extends AuthorizingRealm {
 
     /**
      * 根据用户提交的凭证查询是否具有这个用户 (这里不判断密码是否正确)
+     *
      * @param authenticationToken 用户凭证 (账户密码)
      * @return 相应的用户信息
      * @throws AuthenticationException 当用户不存在或具备其他状态, 如被锁定, 等状态会抛出相应的异常

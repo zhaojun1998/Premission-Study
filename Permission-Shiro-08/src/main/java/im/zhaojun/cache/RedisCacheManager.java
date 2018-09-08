@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 @Component
-public class RedisCacheManager extends AbstractCacheManager  {
+public class RedisCacheManager extends AbstractCacheManager {
 
     @Resource
     private RedisCache redisCache;

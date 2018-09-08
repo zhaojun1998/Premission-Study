@@ -30,7 +30,7 @@ public class PermissionHandlerInterceptor implements HandlerInterceptor {
                              Object handler) throws Exception {
         response.setHeader("Content-type", "text/html;charset=UTF-8");
 
-        Method method = ((HandlerMethod)handler).getMethod();
+        Method method = ((HandlerMethod) handler).getMethod();
         RequiredRole requiredRole = method.getAnnotation(RequiredRole.class);
         RequiredPermission requiredPermission = method.getAnnotation(RequiredPermission.class);
         User user = (User) request.getSession().getAttribute("user");

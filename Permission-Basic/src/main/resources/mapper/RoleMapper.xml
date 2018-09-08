@@ -28,8 +28,8 @@
     </insert>
     <update id="updateByPrimaryKey" parameterType="im.zhaojun.model.Role">
         update role
-        set name        = #{name,jdbcType=VARCHAR},
-            description = #{description,jdbcType=VARCHAR}
+        set name = #{name,jdbcType=VARCHAR},
+        description = #{description,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
 
@@ -38,7 +38,7 @@
         select *
         from role_premission, permission
         where role_premission.permission_id = permission.id
-              and role_premission.role_id = #{id,jdbcType=INTEGER}
+        and role_premission.role_id = #{id,jdbcType=INTEGER}
     </select>
 
     <delete id="deletePermissions" parameterType="java.lang.Integer">

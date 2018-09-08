@@ -28,7 +28,7 @@
     <update id="updateByPrimaryKey" parameterType="im.zhaojun.model.User">
         update user
         set username = #{username,jdbcType=VARCHAR},
-            password = #{password,jdbcType=VARCHAR}
+        password = #{password,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
 

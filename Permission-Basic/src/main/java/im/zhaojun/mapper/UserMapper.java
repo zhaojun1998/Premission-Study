@@ -17,6 +17,7 @@ public interface UserMapper {
 
     /**
      * 查询用户拥有的角色列表
+     *
      * @param id 用户 id
      * @return 角色列表
      */
@@ -24,6 +25,7 @@ public interface UserMapper {
 
     /**
      * 删除用户所有角色
+     *
      * @param id 用户id
      * @return 删除成功的条数
      */
@@ -31,6 +33,7 @@ public interface UserMapper {
 
     /**
      * 为用户赋予角色
+     *
      * @param userId 用户 id
      * @param roleId 授予的角色 id
      * @return 插入成功的条数
@@ -40,9 +43,10 @@ public interface UserMapper {
 
     /**
      * 根据用户名密码查询账号是否存在
-     * @param username  用户名
-     * @param password  密码
-     * @return  查询到的账号
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @return 查询到的账号
      */
-    User selectUserByUsernameAndPassword(@Param("username")String username,@Param("password")String password);
+    User selectUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 }

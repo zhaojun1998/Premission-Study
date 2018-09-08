@@ -49,6 +49,7 @@ public class MyRealm extends AuthorizingRealm {
 
     /**
      * 模拟查询数据库, 假设数据库只有 zhao - 123456 这条数据
+     *
      * @param username 用户名
      * @return 查询到的用户
      */

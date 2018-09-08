@@ -42,6 +42,6 @@
 
     <!-- 凭证匹配器 : 使用 md5 算法-->
     <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
-        <property name="hashAlgorithmName" value="md5" />
+        <property name="hashAlgorithmName" value="md5"/>
     </bean>
 </beans>

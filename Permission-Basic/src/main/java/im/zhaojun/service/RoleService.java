@@ -17,6 +17,7 @@ public class RoleService {
     public Integer add(Role role) {
         return roleMapper.insert(role);
     }
+
     public Role get(Integer roleId) {
         return roleMapper.selectByPrimaryKey(roleId);
     }
