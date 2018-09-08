@@ -13,4 +13,4 @@
 * [Shiro 集成 Spring 之授权缓存](http://www.zhaojun.im/shiro-08/)
 * [Shiro 集成 Spring 之会话管理](http://www.zhaojun.im/shiro-09/)
 * [Shiro 集成 Spring 之注解](http://www.zhaojun.im/shiro-10/)
-
+* [Shiro 集成 Spring 之记住我](http://www.zhaojun.im/shiro-11/)

@@ -1,7 +1,6 @@
 package im.zhaojun.controller;
 
 import im.zhaojun.pojo.User;
-import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -20,7 +19,8 @@ public class LoginController {
     @ResponseBody
     public String login(User user) {
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
+        UsernamePasswordToken token =
+                new UsernamePasswordToken(user.getUsername(), user.getPassword(), user.getRememberMe());
         try {
             subject.login(token);
         } catch (AuthenticationException e) {
