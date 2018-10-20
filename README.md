@@ -14,3 +14,6 @@
 * [Shiro 集成 Spring 之会话管理](http://www.zhaojun.im/shiro-09/)
 * [Shiro 集成 Spring 之注解](http://www.zhaojun.im/shiro-10/)
 * [Shiro 集成 Spring 之记住我](http://www.zhaojun.im/shiro-11/)
+
+## Shiro 进阶
+* [Shiro 进阶之从数据库读取过滤器链](http://www.zhaojun.im/shiro-12/)
