@@ -39,7 +39,9 @@ public class JedisUtil {
 
     public byte[] get(byte[] key) {
         Jedis jedis = getResource();
-        return jedis.get(key);
+        byte[] bytes = jedis.get(key);
+        jedis.close();
+        return bytes;
     }
 
     public void del(byte[] key) {

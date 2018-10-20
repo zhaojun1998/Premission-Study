@@ -7,7 +7,6 @@ import redis.clients.jedis.JedisPool;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
 
 @Component
 public class JedisUtil {
@@ -40,7 +39,9 @@ public class JedisUtil {
 
     public byte[] get(byte[] key) {
         Jedis jedis = getResource();
-        return jedis.get(key);
+        byte[] bytes = jedis.get(key);
+        jedis.close();
+        return bytes;
     }
 
     public void del(byte[] key) {
